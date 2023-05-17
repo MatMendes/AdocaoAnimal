@@ -1,0 +1,27 @@
+<?php
+include "db_connection.php";
+
+function animalSelecionar($id)
+{
+    global $conn;
+    
+    $sql = "SELECT * FROM animal WHERE id = $id";
+    $result = $conn->query($sql);
+    
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo "ID: " . $row["id"] . "<br>";
+            echo "Nome: " . $row["nome"] . "<br>";
+            echo "Peso: " . $row["peso"] . "<br>";
+            echo "Sexo: " . $row["sexo"] . "<br>";
+            echo "Descrição: " . $row["descricao"] . "<br>";
+            echo "Histórico: " . $row["historico"] . "<br>";
+            echo "Tipo: " . $row["tipo"] . "<br>";
+            echo "Status: " . $row["status"] . "<br>";
+        }
+    } else {
+        echo "Nenhum animal encontrado com o ID: $id";
+    }
+}
+
+?>

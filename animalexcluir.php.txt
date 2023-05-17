@@ -1,0 +1,21 @@
+<?php
+include "db_connection.php";
+
+function animalExcluir($id)
+{
+    global $conn;
+    
+$sql = "DELETE FROM animal WHERE id = $id";
+    
+if ($conn->query($sql) === TRUE) {
+        
+       
+echo "Animal excluído com sucesso!";
+    } else {
+        
+       
+echo "Erro ao excluir o animal: " . $conn->error;
+    }
+}
+
+?>

@@ -1,0 +1,21 @@
+<?php
+include "db_connection.php";
+
+function animalAtualizar($id, $nome, $peso, $sexo, $descricao, $historico, $tipo, $status)
+{
+    global $conn;
+    
+    $sql = "UPDATE animal
+            SET nome = '$nome', peso = $peso, sexo = '$sexo', descricao = '$descricao',
+                historico = '$historico', tipo = '$tipo', status = '$status'
+            WHERE id = $id";
+    
+    if ($conn->query($sql) === TRUE) {
+        echo "Animal atualizado com sucesso!";
+    } else {
+        echo "Erro ao atualizar o animal: " . $conn->error;
+    }
+}
+
+animalAtualizar(1, "Billy", 12.3, "Macho", "Cachorro muito brincalhão", "Nenhum histórico", "Cachorro", "Adotado");
+?>

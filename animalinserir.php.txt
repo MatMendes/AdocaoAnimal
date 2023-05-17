@@ -1,0 +1,20 @@
+<?php
+include "db_connection.php";
+
+function animalInserir($nome, $peso, $sexo, $descricao, $historico, $tipo, $status)
+{
+    global $conn;
+    
+    $sql = "INSERT INTO animal (nome, peso, sexo, descricao, historico, tipo, status)
+            VALUES ('$nome', $peso, '$sexo', '$descricao', '$historico', '$tipo', '$status')";
+    
+    if ($conn->query($sql) === TRUE) {
+        echo "Animal inserido com sucesso!";
+    } else {
+        echo "Erro ao inserir o animal: " . $conn->error;
+    }
+}
+
+
+animalInserir("Billy", 7.7, "Macho", "Cachorro muito brincalhão e alegre", "Nenhum histórico", "Cachorro", "Disponível");
+?>
